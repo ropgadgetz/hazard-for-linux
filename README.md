@@ -1,6 +1,6 @@
 # Hazard, for Linux
 
-This is a version of [Hazard Nuker](https://www.github.com/Rdimo/Hazard-Nuker)
+This is a version of [Hazard Nuker](https://www.github.com/Rdimo/Hazard-Nuker), but made for Linux
 
 Tested on Artix Linux, Zorin OS and Linux Mint
 
