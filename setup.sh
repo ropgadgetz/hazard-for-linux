@@ -14,17 +14,6 @@ then
 fi
 pip install -r requirements.txt
 clear
-#echo "[+] Installing chromedriver"
-if [ $? -eq 0 ] #0 return code means no error
-then
-    echo "[+] Installing chromedriver in ~ folder"
-    $cwd=pwd
-    #cd ~
-    wget https://chromedriver.storage.googleapis.com/99.0.4844.35/chromedriver_linux64.zip #replace this with your chrome version
-    unzip chromedriver_linux64.zip
-    rm chromedriver_linux64.zip 
-    #cd $cwd
-fi
 check_browser chrome
 if [ $? -eq 0 ] #0 return code means no error
 then
