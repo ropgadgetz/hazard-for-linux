@@ -1,4 +1,4 @@
-Tested on Artix Linux
+Tested on Artix Linux, Zorin OS and Linux Mint
 
 How to run:
 
